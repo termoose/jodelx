@@ -22,7 +22,6 @@ defmodule Jodelx.Token do
   end
 
   def parse_token_reply({:ok, reply}) do
-    IO.inspect reply.body
     json_struct = reply.body |> Poison.decode!
 
     %{"access_token" => token,
