@@ -21,7 +21,7 @@ defmodule Jodelx.Token do
     end
   end
 
-  def parse_token_reply({:ok, reply}) do
+  defp parse_token_reply({:ok, reply}) do
     json_struct = reply.body |> Poison.decode!
 
     %{"access_token" => token,
@@ -30,11 +30,11 @@ defmodule Jodelx.Token do
     %Jodelx.Token{token: token, expiration: expiration}
   end
 
-  def has_expired?(%Jodelx.Token{expiration: expiration}) do
+  defp has_expired?(%Jodelx.Token{expiration: expiration}) do
     expiration < now
   end
 
-  def now do
+  defp now do
     DateTime.utc_now |> DateTime.to_unix
   end
 end
