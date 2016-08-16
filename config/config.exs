@@ -2,6 +2,15 @@
 # and its dependencies with the aid of the Mix.Config module.
 use Mix.Config
 
+config :jodelx, Jodelx.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  database: "jodelx_repo",
+  username: "birkedal",
+  password: "birkedal",
+  hostname: "localhost"
+
+config :jodelx, ecto_repos: [Jodelx.Repo]
+
 # This configuration is loaded before any dependency and is restricted
 # to this project. If another project depends on this project, this
 # file won't be loaded nor affect the parent project. For this reason,

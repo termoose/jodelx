@@ -11,7 +11,8 @@ defmodule Jodelx do
       # Starts a worker by calling: Jodelx.Worker.start_link(arg1, arg2, arg3)
       # worker(Jodelx.Worker, [arg1, arg2, arg3]),
       worker(Jodelx.Token, []),
-      worker(Jodelx.Posts, [])
+      worker(Jodelx.Posts, []),
+      supervisor(Jodelx.Repo, [])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

@@ -14,7 +14,7 @@ defmodule Jodelx.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :httpoison],
+    [applications: [:logger, :httpoison, :postgrex, :ecto, :live_reload],
      mod: {Jodelx, []}]
   end
 
@@ -30,6 +30,8 @@ defmodule Jodelx.Mixfile do
   defp deps do
     [{:httpoison, "~> 0.9.0"},
      {:poison, "~> 2.0"},
-     {:amnesia, "~> 0.2.4"}]
+     {:postgrex, ">= 0.0.0"},
+     {:ecto, "~> 2.0.0"},
+     {:live_reload, git: "https://github.com/termoose/live-reload", only: :dev}]
   end
 end
