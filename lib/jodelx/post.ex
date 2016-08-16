@@ -11,11 +11,12 @@ defmodule Jodelx.Post do
     field :vote_count, :integer
     field :child_count, :integer
     field :img_url, :string
+    field :post_id, :string
   end
 
   def changeset(post, params \\ %{}) do
     post
-    |> cast(params, [:created_at])
-    |> unique_constraint(:created_at)
+    |> cast(params, [:post_id])
+    |> unique_constraint(:post_id)
   end
 end
