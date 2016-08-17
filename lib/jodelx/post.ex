@@ -3,7 +3,7 @@ defmodule Jodelx.Post do
   import Ecto.Changeset
 
   schema "post" do
-    field :created_at, :string
+    field :created_at, Ecto.DateTime
     field :color, :string
     field :location, :string
     field :message, :string

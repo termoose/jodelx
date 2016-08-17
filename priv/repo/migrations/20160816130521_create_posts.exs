@@ -3,7 +3,7 @@ defmodule Jodelx.Repo.Migrations.CreatePosts do
 
   def change do
     create table(:post) do
-      add :created_at, :string
+      add :created_at, :datetime
       add :color, :string
       add :location, :string
       add :message, :string
