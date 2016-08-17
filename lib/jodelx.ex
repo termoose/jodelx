@@ -12,7 +12,8 @@ defmodule Jodelx do
       # worker(Jodelx.Worker, [arg1, arg2, arg3]),
       worker(Jodelx.Token, []),
       worker(Jodelx.Posts, []),
-      supervisor(Jodelx.Repo, [])
+      supervisor(Jodelx.Repo, []),
+      worker(Jodelx.Fetcher, [60]) # Fetch jodels every 15s
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

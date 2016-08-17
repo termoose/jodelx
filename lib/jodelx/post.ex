@@ -16,7 +16,9 @@ defmodule Jodelx.Post do
 
   def changeset(post, params \\ %{}) do
     post
-    |> cast(params, [:post_id])
+    |> cast(params,
+            [:created_at, :color, :location, :message, :user_handle,
+             :vote_count, :child_count, :img_url, :post_id])
     |> unique_constraint(:post_id)
   end
 end
