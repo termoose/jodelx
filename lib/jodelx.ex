@@ -13,7 +13,7 @@ defmodule Jodelx do
       worker(Jodelx.Token, []),
       worker(Jodelx.Posts, []),
       supervisor(Jodelx.Repo, []),
-      worker(Jodelx.Fetcher, [60]) # Fetch jodels every 15s
+      worker(Jodelx.Fetcher, [30]) # Fetch jodels every 15s
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

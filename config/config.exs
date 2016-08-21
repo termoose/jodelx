@@ -27,7 +27,7 @@ config :jodelx, ecto_repos: [Jodelx.Repo]
 #
 # Or configure a 3rd-party app:
 #
-#     config :logger, level: :info
+config :logger, level: :info
 #
 
 # It is also possible to import configuration files, relative to this

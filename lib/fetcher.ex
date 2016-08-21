@@ -12,7 +12,13 @@ defmodule Jodelx.Fetcher do
 
   def handle_info(:work, delay) do
     Jodelx.Posts.get_changeset_posts
+    #|> Enum.take(10)
     |> Enum.map(&Jodelx.Repo.insert/1)
+    #|> Enum.map(fn change -> #IO.inspect change
+    #                         case Jodelx.Repo.insert(change) do
+    #                           {:ok, _} -> IO.puts "#{inspect change} added!"
+    #                           {:error, reason} -> IO.inspect reason
+    #                         end end)
 
     schedule_work(delay)
     {:noreply, delay}

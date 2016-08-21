@@ -11,6 +11,7 @@ defmodule Jodelx.Posts do
 
   def get_changeset_posts do
     get_posts
+    |> Enum.reverse
     |> Enum.map(&to_changeset/1)
   end
 

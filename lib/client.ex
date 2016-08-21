@@ -41,42 +41,39 @@ defmodule Jodelx.Client do
     message = type <> "%" <> @base_api <> "%443%" <> @api_path <> path <> "%" <>
       auth <> "%" <> timestamp <> "%" <> params <> "%" <> body
 
-    IO.puts "Message #{message}"
-    bearer_token = hmac_sign(@secret, message)
-
-    bearer_token
+    hmac_sign(@secret, message)
   end
 
   def register do
     location = %{"city" => "Oslo",
                  "loc_accuracy" => 100,
-                 "loc_coordinates" => %{"lat" => 60, "lng" => 10.75}, "country" => "NO"}
+                 "loc_coordinates" => %{"lat" => 59.9139, "lng" => 10.7522}, "country" => "NO"}
     body = register_data(@client_id, device_uid, location) |> Poison.encode!
-    IO.puts body
+
     timestamp = iso_time
     auth_header = sign_request("POST", "users/", "", "", body, timestamp)
-    IO.puts "auth header: #{auth_header}"
+
     headers = ["X-Client-Type": @client_type,
                "X-Authorization": "HMAC " <> auth_header,
                "X-Api-Version": @api_version,
                "X-Timestamp": timestamp,
                "Accept-Encoding": "gzip, deflate",
                "Content-Type": "application/json"]
-    IO.inspect headers
+
     post("users/", body, headers)
   end
 
   def posts(token) do
     timestamp = iso_time
     auth_header = sign_request("GET", "posts/", token, "", "", timestamp)
-    IO.puts "auth header: #{auth_header}"
+
     headers = ["X-Client-Type": @client_type,
                "X-Authorization": "HMAC " <> auth_header,
                "X-Api-Version": @api_version,
                "X-Timestamp": timestamp,
                "Authorization": "bearer " <> token,
                "Accept-Encoding": "gzip, deflate"]
-    IO.inspect headers
+
     get("posts/", headers)
   end
 end
