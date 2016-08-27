@@ -17,12 +17,13 @@ defmodule Jodelx.Token do
         {:reply, state.token, state}
       true ->
         token_data = Jodelx.Client.register |> parse_token_reply
+
         {:reply, token_data.token, token_data}
     end
   end
 
   defp parse_token_reply({:ok, reply}) do
-    json_struct = reply.body |> Poison.decode!
+    json_struct = reply.body |> :zlib.gunzip |> Poison.decode!
 
     %{"access_token" => token,
       "expiration_date" => expiration} = json_struct

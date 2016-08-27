@@ -26,6 +26,6 @@ defmodule Jodelx.Fetcher do
 
   defp schedule_work(delay) do
     # Convert delay to miliseconds
-    Process.send_after(self(), :work, delay * 1000)
+    #Process.send_after(self(), :work, delay * 1000)
   end
 end

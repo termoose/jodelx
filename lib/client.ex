@@ -4,10 +4,11 @@ defmodule Jodelx.Client do
   @base_api "api.go-tellm.com"
   @api_path "/api/v2/"
   @endpoint "https://"<> @base_api <> @api_path
-  @user_agent "Jodel/4.12.5 Dalvik/2.1.0 (Linux; U; Android 6.0.1; Nexus 5 Build/MMB29V)"
-  @secret "pNsUaphGEfqqZJJIKHjfxAReDqdCTIIuaIVGaowG"
+  @user_agent "Jodel/4.13.2 Dalvik/2.1.0 (Linux; U; Android 6.0.1; Nexus 5 Build/MMB29V)"
+  #@secret "pNsUaphGEfqqZJJIKHjfxAReDqdCTIIuaIVGaowG"
+  @secret "iyWpGGuOOCdKIMRsfxoJMIPsmCFdrscSxGyCfmBb"
   @client_id "81e8a76e-1e02-4d17-9ba0-8a7020261b26"
-  @client_type "android_4.3.7"
+  @client_type "android_4.13.2"
   @api_version "0.2"
   @alphabet "abcdefghijklmnopqrstuvwxyz123456789"
 

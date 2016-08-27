@@ -1,9 +1,9 @@
 defmodule Jodelx.JodelStream do
   import Ecto.Query
-  use GenServer
+  use GenEvent
 
   def start_link do
-    GenServer.start_link(__MODULE__, None, name: __MODULE__)
+    GenEvent.start_link(__MODULE__, None, name: __MODULE__)
   end
 
   def handle_info(:work, time) do

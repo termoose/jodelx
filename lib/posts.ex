@@ -27,7 +27,8 @@ defmodule Jodelx.Posts do
     color = Map.get(post, "color")
     message = Map.get(post, "message")
     child_count = Map.get(post, "child_count")
-    img_url = Map.get(post, "img_url")
+    img_url = Map.get(post, "image_url")
+    replies = Map.get(post, "children")
 
     Jodelx.Post.changeset(%Jodelx.Post{}, %{created_at: created_at,
                                             color: color,
@@ -42,7 +43,7 @@ defmodule Jodelx.Posts do
   
   def handle_call(:get_posts, _from, _state) do
     {:ok, reply} = Jodelx.Token.get_token |> Jodelx.Client.posts
-    reply_body = reply.body |> Poison.decode!
+    reply_body = reply.body |> :zlib.gunzip |> Poison.decode!
     %{"posts" => post_list} = reply_body
 
     {:reply, post_list, None}
