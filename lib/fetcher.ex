@@ -10,16 +10,20 @@ defmodule Jodelx.Fetcher do
     {:ok, delay}
   end
 
+  def push_to_db(entry = {post, replies}) do
+    # Insert the post
+    Jodelx.Repo.insert(post)
+
+    # Insert the replies
+    replies
+    |> Enum.map(&Jodelx.Repo.insert/1)
+  end
+
   def handle_info(:work, delay) do
     Jodelx.Posts.get_changeset_posts
-    #|> Enum.take(10)
-    |> Enum.map(&Jodelx.Repo.insert/1)
-    #|> Enum.map(fn change -> #IO.inspect change
-    #                         case Jodelx.Repo.insert(change) do
-    #                           {:ok, _} -> IO.puts "#{inspect change} added!"
-    #                           {:error, reason} -> IO.inspect reason
-    #                         end end)
+    |> Enum.map(&push_to_db/1)
 
+    
     schedule_work(delay)
     {:noreply, delay}
   end
