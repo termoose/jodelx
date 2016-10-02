@@ -17,4 +17,4 @@ erl_crash.dump
 *.ez
 
 # Mnesia database
-Mnesia.*
+Mnesia.*.deliver/releases/
