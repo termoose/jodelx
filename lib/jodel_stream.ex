@@ -1,20 +1,6 @@
 defmodule Jodelx.JodelStream do
   import Ecto.Query
-  use GenEvent
-
-  def start_link do
-    GenEvent.start_link(__MODULE__, None, name: __MODULE__)
-  end
-
-  def handle_info(:work, time) do
-    
-    {:noreply, time}
-  end
-
-  defp schedule_print do
-    Process.send_after(self(), :work, 1000)
-  end
-
+#  use GenEvent
 
   # DEPRECATED below
   def get_stream do
