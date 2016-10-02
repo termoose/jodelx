@@ -14,7 +14,7 @@ defmodule Jodelx.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :httpoison, :postgrex, :ecto, :live_reload],
+    [applications: [:logger, :httpoison, :poison, :postgrex, :ecto],
      mod: {Jodelx, []}]
   end
 
