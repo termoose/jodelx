@@ -29,8 +29,6 @@ defmodule Jodelx.Posts do
     img_url = Map.get(reply, "image_url")
     parent_creator = Map.get(reply, "parent_creator")
 
-    
-
     Jodelx.Reply.changeset(%Jodelx.Reply{},
                            %{created_at: created_at,
                              color: color,
@@ -83,7 +81,7 @@ defmodule Jodelx.Posts do
   
   def handle_call(:get_posts, _from, _state) do
     {:ok, reply} = Jodelx.Token.get_token |> Jodelx.Client.posts
-    reply_body = reply.body |> :zlib.gunzip |> Poison.decode!
+    reply_body = reply.body |> Poison.decode!
     %{"posts" => post_list} = reply_body
 
     {:reply, post_list, None}

@@ -4,11 +4,12 @@ defmodule Jodelx.Client do
   @base_api "api.go-tellm.com"
   @api_path "/api/v2/"
   @endpoint "https://"<> @base_api <> @api_path
-  @user_agent "Jodel/4.13.2 Dalvik/2.1.0 (Linux; U; Android 6.0.1; Nexus 5 Build/MMB29V)"
+  @user_agent "Jodel/4.37.2 Dalvik/2.1.0 (Linux; U; Android 6.0.1; Nexus 5 Build/MMB29V)"
   #@secret "pNsUaphGEfqqZJJIKHjfxAReDqdCTIIuaIVGaowG"
-  @secret "iyWpGGuOOCdKIMRsfxoJMIPsmCFdrscSxGyCfmBb"
+  #@secret "iyWpGGuOOCdKIMRsfxoJMIPsmCFdrscSxGyCfmBb"
+  @secret "OjZvbmHjcGoPhz6OfjIeDRzLXOFjMdJmAIplM7Gq"
   @client_id "81e8a76e-1e02-4d17-9ba0-8a7020261b26"
-  @client_type "android_4.13.2"
+  @client_type "android_4.37.2"
   @api_version "0.2"
   @alphabet "abcdefghijklmnopqrstuvwxyz123456789"
 
@@ -47,7 +48,7 @@ defmodule Jodelx.Client do
 
   def register do
     location = %{"city" => "Oslo",
-                 "loc_accuracy" => 100,
+                 "loc_accuracy" => 0,
                  "loc_coordinates" => %{"lat" => 59.9139, "lng" => 10.7522}, "country" => "NO"}
     body = register_data(@client_id, device_uid, location) |> Poison.encode!
 
