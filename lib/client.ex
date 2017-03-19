@@ -64,6 +64,21 @@ defmodule Jodelx.Client do
     post("users/", body, headers)
   end
 
+  def post_replies(token, post_id) do
+    timestamp = iso_time
+    auth_header = sign_request("GET", "posts/" <> post_id, token, "", "", timestamp)
+
+    headers = ["X-Client-Type": @client_type,
+               "X-Authorization": "HMAC " <> auth_header,
+               "X-Api-Version": @api_version,
+               "X-Timestamp": timestamp,
+               "Authorization": "bearer " <> token,
+               "Accept-Encoding": "gzip, deflate"]
+
+    get("posts/" <> post_id, headers)
+    
+  end
+
   def posts(token) do
     timestamp = iso_time
     auth_header = sign_request("GET", "posts/", token, "", "", timestamp)

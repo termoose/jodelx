@@ -33,6 +33,7 @@ defmodule Jodelx.Mixfile do
      {:postgrex, ">= 0.0.0"},
      {:ecto, "~> 2.0.0"},
      {:live_reload, git: "https://github.com/termoose/live-reload", only: :dev},
-     {:exrm, "~> 1.0.8"}]
+     {:exrm, "~> 1.0.8"},
+     {:cachex, "~> 2.0"}]
   end
 end
