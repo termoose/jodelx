@@ -23,7 +23,7 @@ defmodule Jodelx.Token do
   end
 
   defp parse_token_reply({:ok, reply}) do
-    json_struct = reply.body |> :zlib.gunzip |> Poison.decode!
+    json_struct = reply.body |> Poison.decode!
 
     %{"access_token" => token,
       "expiration_date" => expiration} = json_struct
