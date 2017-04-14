@@ -12,14 +12,17 @@ defmodule Jodelx.Token do
   end
   
   def handle_call(:get_token, _from, state) do
-    case has_expired?(state) do
-      false ->
-        {:reply, state.token, state}
-      true ->
-        token_data = Jodelx.Client.register |> parse_token_reply
+    token_data = Jodelx.Client.register |> parse_token_reply
 
-        {:reply, token_data.token, token_data}
-    end
+    {:reply, token_data.token, token_data}
+#    case has_expired?(state) do
+#      false ->
+#        {:reply, state.token, state}
+#      true ->
+#        token_data = Jodelx.Client.register |> parse_token_reply
+
+#        {:reply, token_data.token, token_data}
+#    end
   end
 
   defp parse_token_reply({:ok, reply}) do
