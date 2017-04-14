@@ -1,5 +1,6 @@
 defmodule Jodelx.Posts do
   use GenServer
+  require Logger
 
   def start_link do
     GenServer.start_link(__MODULE__, None, name: __MODULE__)
@@ -81,6 +82,9 @@ defmodule Jodelx.Posts do
   
   def handle_call(:get_posts, _from, _state) do
     {:ok, reply} = Jodelx.Token.get_token |> Jodelx.Client.posts
+
+    Logger.info "Parsing: #{inspect reply.body}"
+    
     reply_body = reply.body |> Poison.decode!
     %{"posts" => post_list} = reply_body
 
