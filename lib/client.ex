@@ -4,12 +4,10 @@ defmodule Jodelx.Client do
   @base_api "api.go-tellm.com"
   @api_path "/api/v2/"
   @endpoint "https://"<> @base_api <> @api_path
-  @user_agent "Jodel/4.41.0 Dalvik/2.1.0 (Linux; U; Android 6.0.1; Nexus 5 Build/MMB29V)"
-  #@secret "pNsUaphGEfqqZJJIKHjfxAReDqdCTIIuaIVGaowG"
-  #@secret "iyWpGGuOOCdKIMRsfxoJMIPsmCFdrscSxGyCfmBb"
-  @secret "hFvMqLauMtnodakokftuKETbIsVLxpqfjAXiRoih"
+  @user_agent "Jodel/4.42.4 Dalvik/2.1.0 (Linux; U; Android 6.0.1; Nexus 5 Build/MMB29V)"
+  @secret "bJYlFZkrnLpLMVisrbstPDNsaYHPbzcKRSpqtjtt"
   @client_id "81e8a76e-1e02-4d17-9ba0-8a7020261b26"
-  @client_type "android_4.41.0"
+  @client_type "android_4.42.4"
   @api_version "0.2"
   @alphabet "abcdefghijklmnopqrstuvwxyz123456789"
 
@@ -27,7 +25,7 @@ defmodule Jodelx.Client do
     #:crypto.strong_rand_bytes(64) |> Base.url_encode64 |> binary_part(0, 64)
     #alp = "abcdefghijklmnopqrstuvwxyz123456789" |> String.split("", trim: true)
     #Enum.reduce(1..64, [], fn (i, acc) -> [Enum.random(alp) | acc] end) |> Enum.join("")
-    "bda1edc56cda91a4945b5d6e07f23449c3c18d235759952807de15b68258171f"
+    "bda1edc56cda91a4945b5d6e07f23449c3c18d235759952807de15b68258171a"
   end
 
   def iso_time do
