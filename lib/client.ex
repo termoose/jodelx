@@ -25,7 +25,8 @@ defmodule Jodelx.Client do
     #:crypto.strong_rand_bytes(64) |> Base.url_encode64 |> binary_part(0, 64)
     #alp = "abcdefghijklmnopqrstuvwxyz123456789" |> String.split("", trim: true)
     #Enum.reduce(1..64, [], fn (i, acc) -> [Enum.random(alp) | acc] end) |> Enum.join("")
-    "bda1edc56cda91a4945b5d6e07f23449c3c18d235759952807de15b68258171a"
+    #"bda1edc56cda91a4945b5d6e07f23449c3c18d235759952807de15b68258171a"
+    :crypto.strong_rand_bytes(32) |> Base.encode16 |> String.downcase
   end
 
   def iso_time do
